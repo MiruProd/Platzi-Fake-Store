@@ -1,0 +1,149 @@
+// ==========================================
+// 1. SASS-ПЕРЕМЕННЫЕ (Для медиа-запросов @media)
+// ==========================================
+// Используются через $breakpoint-..., так как нативные CSS-переменные в медиа-выражениях не работают
+$breakpoint-xs: 375px;   // Маленькие телефоны
+$breakpoint-sm: 576px;   // Телефоны
+$breakpoint-md: 768px;   // Планшеты (Портрет)
+$breakpoint-lg: 992px;   // Планшеты (Ландшафт) / Нетбуки
+$breakpoint-xl: 1200px;  // Обычные мониторы
+$breakpoint-xxl: 1400px; // Большие экраны
+
+
+// ==========================================
+// 2. ГЛОБАЛЬНЫЕ ТОКЕНЫ (Светлая тема по умолчанию)
+// ==========================================
+:root {
+  // --- Типографика ---
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-code: 'Courier New', Courier, monospace;
+
+  // --- Размеры шрифтов (Идеально подобранный масштаб) ---
+  --font-size-xs: 0.75rem;   // 12px
+  --font-size-sm: 0.875rem;  // 14px (Обычный текст карточек, подписи)
+  --font-size-md: 1rem;      // 16px (Базовый текст)
+  --font-size-lg: 1.125rem;  // 18px (H3)
+  --font-size-xl: 1.25rem;   // 20px (H2)
+  --font-size-xxl: 1.5rem;   // 24px (H1)
+  --font-size-hero: 2rem;    // 32px (Крупные баннеры)
+
+  // --- Сетка отступов (Пропорция х8 — стандарт индустрии) ---
+  --spacing-xs: 0.25rem; // 4px
+  --spacing-sm: 0.5rem;  // 8px
+  --spacing-md: 1rem;    // 16px
+  --spacing-lg: 1.5rem;  // 24px
+  --spacing-xl: 2rem;    // 32px
+  --spacing-xxl: 3rem;   // 48px
+
+  // --- Скругления углов ---
+  --radius-xs: 4px;   // Мелкие чекбоксы, мелкие кнопки
+  --radius-sm: 8px;   // Обычные кнопки, инпуты
+  --radius-md: 12px;  // Карточки товаров, модалки
+  --radius-lg: 20px;  // Баннеры, крупные блоки
+  --radius-full: 9999px; // Круглые кнопки, аватарки
+
+  // --- Анимации и переходы ---
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s ease-in-out;
+
+  // --- Высота слоев (Z-Index) ---
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-drawer: 500;
+  --z-modal: 1000;
+  --z-toast: 1500;
+
+  // ==========================================
+  // СЕМАНТИЧЕСКИЕ ЦВЕТА (СВЕТЛАЯ ТЕМА)
+  // ==========================================
+  // --- Фоновые цвета ---
+  --color-bg: #f8fafc;             // Основной серый фон (Slate 50)
+  --color-surface: #ffffff;        // Фон панелей, карточек, шапки
+  --color-surface-hover: #f1f5f9;  // Цвет при наведении на плашки
+  --color-overlay: rgba(15, 23, 42, 0.5); // Задний фон модальных окон (Backdrop)
+
+  // --- Текст ---
+  --color-text-primary: #0f172a;   // Основной текст (Slate 900)
+  --color-text-secondary: #475569; // Второстепенный текст (Slate 600)
+  --color-text-muted: #94a3b8;    // Задизейбленный/подсказки (Slate 400)
+  --color-text-on-primary: #ffffff; // Цвет текста на синих брендовых кнопках
+
+  // --- Границы и линии ---
+  --color-border: #e2e8f0;         // Обычные рамки (Slate 200)
+  --color-border-dark: #cbd5e1;    // Более заметные рамки при фокусе (Slate 300)
+
+  // --- Брендовые цвета (Primary / Accent) ---
+  --color-primary: #2563eb;        // Основной цвет (Royal Blue)
+  --color-primary-hover: #1d4ed8;  // При наведении на синие кнопки
+  --color-primary-light: #eff6ff;  // Очень светлый синий фон для шильдиков/акцентов
+
+  --color-accent: #10b981;         // Акцентный зеленый (идеален для кнопки "Купить")
+  --color-accent-hover: #059669;
+
+  // --- Статусы и обратная связь (Фидбек) ---
+  --color-success: #10b981;        // Успех (добавлено в корзину, заказ оформлен)
+  --color-success-bg: #ecfdf5;
+  
+  --color-warning: #f59e0b;        // Предупреждение (осталось мало товара)
+  --color-warning-bg: #fffbeb;
+  
+  --color-error: #ef4444;          // Ошибка (неверный пароль, товара нет в наличии)
+  --color-error-bg: #fef2f2;
+  
+  --color-info: #3b82f6;           // Информационные сообщения
+  --color-info-bg: #eff6ff;
+
+  // --- Тени (Премиальный объем) ---
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+
+// ==========================================
+// 3. СЕМАНТИЧЕСКИЕ ЦВЕТА (ТЕМНАЯ ТЕМА)
+// ==========================================
+.dark-theme {
+  // --- Фоновые цвета ---
+  --color-bg: #0f172a;             // Темно-синий фон (Slate 900)
+  --color-surface: #1e293b;        // Фон карточек и панелей (Slate 800)
+  --color-surface-hover: #334155;  // При наведении
+  --color-overlay: rgba(0, 0, 0, 0.8); // Более плотный бэкдроп
+
+  // --- Текст ---
+  --color-text-primary: #f8fafc;   // Почти белый текст (Slate 50)
+  --color-text-secondary: #cbd5e1; // Серый читаемый (Slate 300)
+  --color-text-muted: #64748b;    //Slate 500
+  --color-text-on-primary: #0f172a; // Черный текст на светящихся кнопках темной темы
+
+  // --- Границы и линии ---
+  --color-border: #334155;         // Рамки в темной теме (Slate 700)
+  --color-border-dark: #475569;    //Slate 600
+
+  // --- Брендовые цвета (Primary / Accent) ---
+  --color-primary: #60a5fa;        // Светящийся синий (Slate Blue 400)
+  --color-primary-hover: #93c5fd;
+  --color-primary-light: rgba(96, 165, 250, 0.1); // Темно-синяя подложка
+
+  --color-accent: #34d399;         // Яркий зеленый
+  --color-accent-hover: #6ee7b7;
+
+  // --- Статусы ---
+  --color-success: #34d399;
+  --color-success-bg: rgba(52, 211, 153, 0.1);
+  
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(251, 191, 36, 0.1);
+  
+  --color-error: #f87171;
+  --color-error-bg: rgba(248, 113, 113, 0.1);
+  
+  --color-info: #60a5fa;
+  --color-info-bg: rgba(96, 165, 250, 0.1);
+
+  // --- Тени (Более мягкие для темного фона) ---
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+}
