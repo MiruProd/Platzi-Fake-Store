@@ -1,1 +1,11 @@
-export interface LocationModel {}
+/**
+ * Модель географической локации (физического магазина).
+ * Описывает структуру данных для GET-запроса.
+ */
+export interface LocationModel {
+  id: number; // Уникальный идентификатор локации.
+  name: string; // Название или адрес филиала.
+  description: string; // Краткое описание филиала.
+  latitude: number; // Географическая широта.
+  longitude: number; // Географическая долгота.
+}
