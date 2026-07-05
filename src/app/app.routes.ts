@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'products',
+        pathMatch: 'full'
+    },
+    {
         path: 'products',
         loadComponent: () => import('./features/catalog/pages/product-list/product-list').then(m => m.ProductList)
     },
@@ -20,5 +25,9 @@ export const routes: Routes = [
     {
         path: 'auth',
         loadComponent: () => import('./features/auth/pages/auth-page/auth-page').then(m => m.AuthPage)
-    }
+    },
+    {
+        path: '**',
+        redirectTo: 'products',
+    },
 ];
