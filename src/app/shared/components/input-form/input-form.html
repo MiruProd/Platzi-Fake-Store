@@ -1,0 +1,13 @@
+<div class="form-field">
+  @if (label()) {
+    <label class="form-field__label">{{ label() }}</label>
+  }
+
+  <div class="form-field__control">
+    <ng-content></ng-content>
+  </div>
+
+  @if (error()) {
+    <span class="form-field__error-message">{{ error() }}</span>
+  }
+</div>
