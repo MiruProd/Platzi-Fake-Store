@@ -1,0 +1,58 @@
+@let user = currentUser();
+
+<header class="header">
+  <a routerLink="/" class="header__logo">Platzi Fake Store</a>
+
+  <nav class="header__nav">
+    <ul class="header__menu">
+      <li>
+        <a routerLink="/products" routerLinkActive="header__link--active" class="header__link">
+          Каталог
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/stores" routerLinkActive="header__link--active" class="header__link">
+          Доставка
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="header__user-actions">
+    <button class="header__theme-toggle" (click)="toggleTheme()" type="button">
+      @if (isDark()) {
+        <span class="header__theme-icon header__theme-icon--sun"></span>
+      } @else {
+        <span class="header__theme-icon header__theme-icon--moon"></span>
+      }
+    </button>
+
+    <a
+      routerLink="/cart"
+      routerLinkActive="header__cart-link--active"
+      class="header__cart-link"
+      aria-label="Корзина"
+    >
+      <span class="header__cart-icon"></span>
+    </a>
+
+    @if (user) {
+      <div class="header__profile-dropdown">
+        <button class="header__avatar-trigger" type="button">
+          <img [src]="user.avatar" [alt]="user.name" class="header__avatar" />
+        </button>
+
+        <div class="header__dropdown-menu">
+          <span class="header__dropdown-username">{{ user.name }}</span>
+          <a routerLink="/profile" class="header__dropdown-item">Профиль</a>
+          <button class="header__dropdown-item header__dropdown-item--logout" (click)="logout()">
+            Выйти
+          </button>
+        </div>
+      </div>
+    } @else {
+      <button app-button variant="primary" size="md" routerLink="/auth">Войти</button>
+    }
+  </div>
+</header>
