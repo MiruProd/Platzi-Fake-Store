@@ -1,4 +1,5 @@
 .header {
+  // База и сетка
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,6 +7,7 @@
   background-color: var(--color-surface);
   border-bottom: 2px solid var(--color-border);
 
+  // Навигация
   &__menu {
     display: flex;
     gap: var(--spacing-lg);
@@ -38,6 +40,7 @@
     }
   }
 
+  // Логотип
   &__logo {
     display: inline-block;
     transition: scale var(--transition-fast);
@@ -53,11 +56,13 @@
     }
   }
 
+  // Правая часть (user actions)
   &__user-actions {
     display: flex;
     align-items: center;
   }
 
+  // Корзина
   &__cart-link {
     display: inline-flex;
     align-items: center;
@@ -70,6 +75,13 @@
 
     &:hover {
       background-color: var(--color-surface-hover);
+    }
+
+    &--active {
+      background-color: var(--color-primary-light);
+      .header__cart-icon {
+        background-color: var(--color-primary);
+      }
     }
   }
 
@@ -84,6 +96,48 @@
     -webkit-mask: url('/assets/icons/cart.svg') no-repeat center / contain;
   }
 
+  // Переключатель темы
+  &__theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+
+    transition:
+      background-color var(--transition-fast),
+      transform var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-surface-hover);
+    }
+  }
+
+  &__theme-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+
+    background-color: var(--color-text-primary);
+    transition: background-color var(--transition-fast);
+
+    &--sun {
+      mask: url('/assets/icons/sun.svg') no-repeat center / contain;
+      -webkit-mask: url('/assets/icons/sun.svg') no-repeat center / contain;
+    }
+
+    &--moon {
+      mask: url('/assets/icons/moon.svg') no-repeat center / contain;
+      -webkit-mask: url('/assets/icons/moon.svg') no-repeat center / contain;
+    }
+  }
+
+  // Профиль и дропдаун
   &__profile-dropdown {
     position: relative;
     display: inline-block;
@@ -124,13 +178,13 @@
     box-shadow: var(--shadow-md);
     padding: var(--spacing-sm) 0;
     z-index: var(--z-dropdown);
-    
+
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: 
-      opacity var(--transition-fast), 
-      visibility var(--transition-fast), 
+    transition:
+      opacity var(--transition-fast),
+      visibility var(--transition-fast),
       transform var(--transition-fast);
   }
 
@@ -151,7 +205,9 @@
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
-    transition: background-color var(--transition-fast), color var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
     cursor: pointer;
 
     &:hover {
@@ -168,41 +224,6 @@
         background-color: var(--color-error-bg);
         color: var(--color-error);
       }
-    }
-  }
-
-  &__theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; 
-    height: 40px;
-    border-radius: var(--radius-full);
-    cursor: pointer;
-
-    transition: background-color var(--transition-fast), transform var(--transition-fast);
-
-    &:hover {
-      background-color: var(--color-surface-hover);
-    }
-  }
-
-  &__theme-icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    
-    background-color: var(--color-text-primary);
-    transition: background-color var(--transition-fast);
-
-    &--sun {
-      mask: url('/assets/icons/sun.svg') no-repeat center / contain;
-      -webkit-mask: url('/assets/icons/sun.svg') no-repeat center / contain;
-    }
-
-    &--moon {
-      mask: url('/assets/icons/moon.svg') no-repeat center / contain;
-      -webkit-mask: url('/assets/icons/moon.svg') no-repeat center / contain;
     }
   }
 }
