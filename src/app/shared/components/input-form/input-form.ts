@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-input-form',
@@ -7,4 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './input-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputForm {}
+export class InputForm {
+  public readonly label = input<string>('');
+  public readonly error = input<string | null>(null);
+}
